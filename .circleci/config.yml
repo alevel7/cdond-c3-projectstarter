@@ -90,6 +90,7 @@ jobs:
             cd frontend
             npm install
             npm run test
+      - notify_slack_error
                 
   test-backend:
     docker:
@@ -105,6 +106,7 @@ jobs:
             cd backend
             npm install
             npm run test
+      - notify_slack_error
             
   scan-frontend:
     docker:
