@@ -4,10 +4,10 @@ orbs:
 
 commands:
   notify_slack_error:
-  steps:
-    - slack/notify:
-        event: fail
-        template: basic_fail_1
+    steps:
+      - slack/notify:
+          event: fail
+          template: basic_fail_1
   destroy-environment:
     description: Destroy back-end and front-end cloudformation stacks given a workflow ID.
     parameters:
