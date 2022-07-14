@@ -155,9 +155,9 @@ jobs:
       # Checkout code from git
       - checkout
       - run:
-        name: install tar utility
-        command: |
-          npm install -y tar gzip
+          name: install tar utility
+          command: |
+            npm install -y tar gzip
       - run:
           name: Ensure back-end infrastructure exists
           command: |
