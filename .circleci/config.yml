@@ -190,7 +190,7 @@ jobs:
   configure-infrastructure:
     docker:
       # Docker image here that supports Ansible
-      - image: python:3.7-alpine3.11
+      - image: amazon/aws-cli
     steps:
       # Checkout code from git
       - checkout
@@ -200,8 +200,8 @@ jobs:
       - run:
           name: install utility
           command: |
-            sudo apt-get update -y
-            sudo apt-get install -y yum
+            yum update
+            dnf install python3
             yum install -y tar gzip unzip
       - run:
           name: 'setup aws-cli'
