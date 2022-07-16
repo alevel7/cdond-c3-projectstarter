@@ -200,6 +200,8 @@ jobs:
       - run:
           name: install utility
           command: |
+            sudo apt-get update -y
+            sudo apt-get install -y yum
             yum install -y tar gzip unzip
       - run:
           name: 'setup aws-cli'
