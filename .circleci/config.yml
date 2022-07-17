@@ -203,7 +203,7 @@ jobs:
       - run:
           name: install utility
           command: |
-            yum install -y tar gzip unzip wget make
+            yum install -y tar gzip unzip wget make openssh-client
       - run:
           name: install python
           command: |
