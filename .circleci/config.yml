@@ -200,7 +200,7 @@ jobs:
       - run:
           name: install utility
           command: |
-             apk add --no-cache python3 python3-dev
+            apk add --no-cache python3 python3-dev
             yum install -y tar gzip unzip
       - run:
           name: 'setup aws-cli'
