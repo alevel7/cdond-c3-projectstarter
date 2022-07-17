@@ -200,8 +200,7 @@ jobs:
       - run:
           name: install utility
           command: |
-            yum update
-            dnf install python3
+            apt-get install python3
             yum install -y tar gzip unzip
       - run:
           name: 'setup aws-cli'
