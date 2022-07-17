@@ -204,13 +204,7 @@ jobs:
       - run:
           name: install python
           command: |
-            yum install python37
-      - run:
-          name: 'setup aws-cli'
-          command: |
-            curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-            unzip awscliv2.zip
-            sudo ./aws/install
+            yum install python37 -y
       - attach_workspace:
           at: ~/
       - run:
@@ -223,7 +217,7 @@ jobs:
             cd .circleci/ansible
             ansible-playbook -i inventory.txt configure-server.yml
       # Here's where you will add some code to rollback on failure    
-      - destroy-environment  
+      - destroy-environment 
 
 #   run-migrations:
 #     docker:
