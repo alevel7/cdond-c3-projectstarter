@@ -210,10 +210,11 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            python3 -m pip install --user ansible
+            python3 -m pip install ansible
       - run:
           name: Configure server
           command: |
+            export PATH="/Users/shantanu/Library/Python/3.7/bin:$PATH"
             cd .circleci/ansible
             ansible-playbook -i inventory.txt configure-server.yml
       # Here's where you will add some code to rollback on failure    
