@@ -204,9 +204,7 @@ jobs:
       - run:
           name: install python
           command: |
-            wget http://security.ubuntu.com/ubuntu/pool/main/a/apt/apt_1.0.1ubuntu2.17_amd64.deb -O apt.deb
-            apt-get install python3.8
-            ./configure --enable-optimizations
+            yum install python37
       - run:
           name: 'setup aws-cli'
           command: |
