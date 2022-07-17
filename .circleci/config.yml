@@ -200,8 +200,24 @@ jobs:
       - run:
           name: install utility
           command: |
-            apk add --no-cache python3 python3-dev
             yum install -y tar gzip unzip
+      - run:
+          name: install python
+          command: |
+            wget https://www.python.org/ftp/python/3.7.2/Python-3.7.2.tgz
+            tar xzvf Python-3.7.2.tgz
+            rm -f Python-3.7.2.tgz
+            cd Python-3.7.2
+            ./configure --enable-optimizations
+            make -j 4
+            make altinstall
+            cd ../..
+            rm -rf python_installation
+            apt --purge remove build-essential checkinstall libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev libffi-dev -y
+            apt autoremove -y
+            apt clean
+            python3.7 -m pip install -U pip
+            echo '$alias pip3="python3.7 -m pip"' >> ~/.bashrc
       - run:
           name: 'setup aws-cli'
           command: |
