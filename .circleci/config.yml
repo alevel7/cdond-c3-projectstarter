@@ -204,7 +204,7 @@ jobs:
       - run:
           name: install python
           command: |
-            yum install python37
+            yum install python37 -y
       - run:
           name: 'setup aws-cli'
           command: |
