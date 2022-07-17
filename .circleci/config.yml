@@ -227,10 +227,14 @@ jobs:
   run-migrations:
     docker:
       # Docker image here that supports NodeJS
-      - image: circleci/node:13.8.0
+      - image: amazon/aws-cli
     steps:
       # Checkout code from git
       - checkout
+      - run:
+          name: install utility
+          command: |
+            yum install -y tar gzip unzip wget make openssh-server openssh-clients nodejs npm
       - restore_cache:
           keys: [backend-build]
       - run:
@@ -244,7 +248,7 @@ jobs:
           command: |
             if grep -q "has been executed successfully." ~/project/backend/migrations_dump.txt
             then
-                curl https://kvdb.io/MvCLV4RLpmfKEv94sj8D5H/migration_${CIRCLE_WORKFLOW_ID:0:7}  -d '1'
+                curl  --insecure https://kvdb.io/MvCLV4RLpmfKEv94sj8D5H/migration_${CIRCLE_WORKFLOW_ID:0:7}  -d '1'
             fi
       - destroy-environment     
 
