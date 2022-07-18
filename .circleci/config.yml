@@ -220,21 +220,20 @@ jobs:
             export PATH="/Users/shantanu/Library/Python/3.7/bin:$PATH"
             cd .circleci/ansible
             cat inventory.txt
-            ansible-playbook -i inventory.txt configure-server.yml
-      # Here's where you will add some code to rollback on failure    
+            ansible-playbook -i inventory.txt configure-server.yml 
       - destroy-environment 
 
   run-migrations:
     docker:
       # Docker image here that supports NodeJS
-      - image: amazon/aws-cli
+      - image: circleci/node:13.8.0
     steps:
       # Checkout code from git
       - checkout
       - run:
           name: install utility
           command: |
-            yum install -y tar gzip unzip wget make openssh-server openssh-clients nodejs npm
+            yum install -y tar gzip openssh-server openssh-clients
       - restore_cache:
           keys: [backend-build]
       - run:
