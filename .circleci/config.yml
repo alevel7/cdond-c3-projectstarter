@@ -246,7 +246,6 @@ jobs:
       - run:
           name: Send migration results to memstash
           command: |
-            echo SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
             if grep -q "has been executed successfully." ~/project/backend/migrations_dump.txt
             then
                 echo 'success '
