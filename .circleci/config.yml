@@ -299,11 +299,12 @@ jobs:
       - run:
           name: install utility
           command: |
-            yum install -y tar gzip unzip wget make openssh-server openssh-clients
+            apt-get update && apt-get install -y tar gzip unzip wget make openssh-server openssh-clients
       - run:
           name: install python
           command: |
-            yum install python37 -y
+            apt-get install -y python3 python3-pip python3-setuptools && pip3 install --upgrade pip
+            pip3 --no-cache-dir install --upgrade awscli
       - attach_workspace:
           at: ./.circleci/ansible
       - run:
