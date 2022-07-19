@@ -268,7 +268,7 @@ jobs:
           command: |
             yum install -y tar gzip unzip wget make openssh-server openssh-clients
       - restore_cache:
-        keys: [frontend-build]
+          keys: [frontend-build]
       - run:
           name: Get backend url
           command: |
