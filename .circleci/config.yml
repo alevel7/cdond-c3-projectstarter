@@ -299,7 +299,7 @@ jobs:
       - run:
           name: install utility
           command: |
-            yum install -y tar gzip unzip wget make openssh-server openssh-clients
+            yum install -y tar gzip unzip wget make openssh-server openssh-clients nodejs14
       - run:
           name: install python
           command: |
