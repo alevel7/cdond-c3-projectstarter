@@ -1,0 +1,55 @@
+---
+- name: "update apt packages."
+  become: yes
+  apt:
+    update_cache: yes
+
+- name: "upgrade packages"
+  become: yes
+  apt:
+    upgrade: yes
+
+
+- name: remove dependencies that are no longer required
+  become: yes
+  apt:
+    autoremove: yes
+
+- name: "install dependencies."
+  become: yes
+  apt:
+    name: ["nodejs", "npm"]
+    state: latest
+    update_cache: yes
+
+- name: "install pm2"
+  become: yes
+  npm:
+    name: pm2
+    global: yes
+    production: yes
+    state: present
+
+- name: Creates directory
+  file:
+    path: ~/web
+    state: directory
+
+- name: "copy zipped file"
+  become: yes
+  template:
+    src: "~/backend/artifact.tar.gz"
+    dest: "~/web/artifact.tar.gz"
+
+- name: unzip file
+  shell: |
+    tar -zxvf artifact.tar.gz
+    ls
+    cd artifact
+    ls
+
+- name: Executing node
+  shell: |
+    npm install
+    pm2 stop default
+    pm2 start npm -- start
