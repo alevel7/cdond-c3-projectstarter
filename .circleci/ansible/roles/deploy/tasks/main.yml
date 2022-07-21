@@ -38,7 +38,7 @@
 - name: "copy zipped file"
   become: yes
   template:
-    src: "~/artifact.tar.gz"
+    src: "files/artifact.tar.gz"
     dest: "~/web/artifact.tar.gz"
 
 - name: unzip file
