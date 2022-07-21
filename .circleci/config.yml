@@ -319,7 +319,6 @@ jobs:
       # Docker image here that supports Ansible
       - image: cimg/base:stable
     steps:
-      # Checkout code from git
       - checkout
       - add_ssh_keys:
           fingerprints: ["03:f6:6e:45:65:6d:1a:41:8c:9c:7a:43:2b:11:d9:fd"]
