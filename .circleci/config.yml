@@ -286,7 +286,7 @@ jobs:
     steps:
       # Checkout code from git
       - add_ssh_keys:
-          fingerprints: ["03:f6:6e:45:65:6d:1a:41:8c:9c:7a:43:2b:11:d9:fd"]
+          fingerprints: ["7e:47:76:17:cf:52:8d:d4:04:70:7d:4b:fc:99:db:ba"]
       - checkout
       - install_awscli
       - install_nodejs
@@ -319,7 +319,7 @@ jobs:
     steps:
       - checkout
       - add_ssh_keys:
-          fingerprints: ["03:f6:6e:45:65:6d:1a:41:8c:9c:7a:43:2b:11:d9:fd"]
+          fingerprints: ["7e:47:76:17:cf:52:8d:d4:04:70:7d:4b:fc:99:db:ba"]
       - install_nodejs
       - install_awscli
       - install_ansible  
