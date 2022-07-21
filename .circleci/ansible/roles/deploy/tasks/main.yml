@@ -35,10 +35,6 @@
     path: ~/web
     state: directory
 
-- name: get working directory
-  shell: |
-    echo "$PWD"
-    
 - name: "copy zipped file"
   become: yes
   template:
