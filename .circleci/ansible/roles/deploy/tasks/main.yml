@@ -38,7 +38,7 @@
 - name: "copy zipped file"
   become: yes
   template:
-    src: "~/ansible/files/artifact.tar.gz"
+    src: "~/artifact.tar.gz"
     dest: "~/web/artifact.tar.gz"
 
 - name: unzip file
