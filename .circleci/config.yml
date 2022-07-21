@@ -341,7 +341,7 @@ jobs:
             mkdir files
             cd files
             tar -C ../../../backend -czvf artifact.tar.gz .
-            cd ../
+            cd ..
             
             echo "Contents  of the inventory.txt file is -------"
             cat inventory.txt
