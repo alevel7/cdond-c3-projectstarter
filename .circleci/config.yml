@@ -329,10 +329,6 @@ jobs:
       - attach_workspace:
           at: ./.circleci/ansible
       - run:
-          name: Install dependencies
-          command: |
-            python3 -m pip install ansible
-      - run:
           name: Deploy backend
           command: |
             export PATH="/Users/shantanu/Library/Python/3.7/bin:$PATH"
