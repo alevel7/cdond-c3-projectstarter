@@ -48,9 +48,9 @@
 
 - name: unzip file
   shell: |
-    tar -zxvf artifact.tar.gz
+    tar -zxvf ~/web/artifact.tar.gz
     ls
-    cd artifact
+    cd ~/web/artifact
     ls
 
 - name: Executing node
