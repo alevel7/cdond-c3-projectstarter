@@ -60,8 +60,8 @@ commands:
           when: on_fail
           command: |
             # Curl command here to see if there was a successful migration associated with the workflow id, store result in SUCCESS variable
-            SUCCESS=$(curl  --insecure "https://kvdb.io/MvCLV4RLpmfKEv94sj8D5H/migration_<<parameters.workflow_id>>)
-            if(( $SUCCESS==1 ))
+            SUCCESS=$(curl  --insecure "https://kvdb.io/MvCLV4RLpmfKEv94sj8D5H/migration_<<parameters.workflow_id>>")
+            if(( $SUCCESS==1 ));
             then
               cd ~/project/backend
               npm install
@@ -325,12 +325,7 @@ jobs:
           fingerprints: ["03:f6:6e:45:65:6d:1a:41:8c:9c:7a:43:2b:11:d9:fd"]
       - install_nodejs
       - install_awscli
-      - install_ansible
-      - run:
-          name: install utility
-          command: |
-            yum install -y tar gzip unzip wget make openssh-server openssh-clients
-            
+      - install_ansible  
       - attach_workspace:
           at: ./.circleci/ansible
       - run:
