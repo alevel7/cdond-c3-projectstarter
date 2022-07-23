@@ -427,34 +427,34 @@ jobs:
       - destroy-environment
       - revert-migrations
 
-cleanup:
-    docker:
-      # Docker image here
-      - image: cimg/base:stable
-    steps:
-      # Checkout code from git
-      - checkout
-      - run:
-          name: Get old stack workflow id
-          command: |
-            # your code here
-            export STACKS=($(aws cloudformation list-stacks \
-            --query "StackSummaries[*].StackName" \
-            --stack-status-filter CREATE_COMPLETE --no-paginate --output text))
-            echo Stack names: "${STACKS[@]}"
-            export oldWorkFlowId=$(curl --insecure https://kvdb.io/MvCLV4RLpmfKEv94sj8D5H/old_workflow_id)
-            echo old workflow id : $oldWorkFlowId
-      - run:
-          name: Remove old stacks and files
-          command: |
-            export oldWorkFlowId=$(curl --insecure https://kvdb.io/MvCLV4RLpmfKEv94sj8D5H/old_workflow_id)
-            echo old workflow id : $oldWorkFlowId
-            if [[ "${STACKS[@]}" =~ "${oldWorkFlowId}" ]]
-            then
-              aws s3 rm "s3://udapeople-${oldWorkFlowId}" --recursive
-              aws cloudformation delete-stack --stack-name udapeople-frontend-${oldWorkFlowId}
-              aws cloudformation delete-stack --stack-name udapeople-backend-${oldWorkFlowId}
-            fi
+  cleanup:
+      docker:
+        # Docker image here
+        - image: cimg/base:stable
+      steps:
+        # Checkout code from git
+        - checkout
+        - run:
+            name: Get old stack workflow id
+            command: |
+              # your code here
+              export STACKS=($(aws cloudformation list-stacks \
+              --query "StackSummaries[*].StackName" \
+              --stack-status-filter CREATE_COMPLETE --no-paginate --output text))
+              echo Stack names: "${STACKS[@]}"
+              export oldWorkFlowId=$(curl --insecure https://kvdb.io/MvCLV4RLpmfKEv94sj8D5H/old_workflow_id)
+              echo old workflow id : $oldWorkFlowId
+        - run:
+            name: Remove old stacks and files
+            command: |
+              export oldWorkFlowId=$(curl --insecure https://kvdb.io/MvCLV4RLpmfKEv94sj8D5H/old_workflow_id)
+              echo old workflow id : $oldWorkFlowId
+              if [[ "${STACKS[@]}" =~ "${oldWorkFlowId}" ]]
+              then
+                aws s3 rm "s3://udapeople-${oldWorkFlowId}" --recursive
+                aws cloudformation delete-stack --stack-name udapeople-frontend-${oldWorkFlowId}
+                aws cloudformation delete-stack --stack-name udapeople-backend-${oldWorkFlowId}
+              fi
 
 workflows:
   default:
