@@ -329,7 +329,8 @@ jobs:
       - run:
           name: install utility
           command: |
-            apk install -y openssh-server openssh-clients
+            sudo apt update
+            sudo apt install -y openssh-server openssh-clients
       - attach_workspace:
           at: ./.circleci/ansible
       - run:
