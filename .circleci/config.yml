@@ -330,7 +330,8 @@ jobs:
           name: install utility
           command: |
             sudo apt update
-            sudo apt install -y openssh-server openssh-clients
+            sudo apt install -y openssh-server
+            sudo apt-get install openssh-client
       - attach_workspace:
           at: ./.circleci/ansible
       - run:
