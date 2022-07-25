@@ -410,13 +410,13 @@ jobs:
       # Checkout code from git
       - checkout
       - run:
-          name: Install dependencies
+          name: save old workflow id to kvdb
           command: |
             export OLD_WORKFLOW_ID=$(aws cloudformation list-exports --query \
             "Exports[?Name==\`WorkflowId\`].Value" \
             --no-paginate --output text)
             echo "Old workflow Id : $OLD_WORKFLOW_ID"
-            curl  --insecure https://kvdb.io/MvCLV4RLpmfKEv94sj8D5H/old_workflow_id  -d '${OLD_WORKFLOW_ID}'
+            curl  --insecure https://kvdb.io/MvCLV4RLpmfKEv94sj8D5H/old_workflow_id  -d ${OLD_WORKFLOW_ID}
       - run:
           name: Update cloudfront distribution
           command: |
