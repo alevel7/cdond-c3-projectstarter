@@ -416,7 +416,12 @@ jobs:
             "Exports[?Name==\`WorkflowId\`].Value" \
             --no-paginate --output text)
             echo "Old workflow Id : $OLD_WORKFLOW_ID"
-            curl  --insecure https://kvdb.io/MvCLV4RLpmfKEv94sj8D5H/old_workflow_id  -d ${OLD_WORKFLOW_ID}
+            if [ -z "$variable" ];
+              then echo "$OLD_WORKFLOW_ID is null";
+            else 
+              echo $OLD_WORKFLOW_ID;
+              curl  --insecure https://kvdb.io/MvCLV4RLpmfKEv94sj8D5H/migration_${CIRCLE_WORKFLOW_ID:0:7}  -d ${OLD_WORKFLOW_ID}
+            fi
       - run:
           name: Update cloudfront distribution
           command: |
