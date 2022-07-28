@@ -1,4 +1,6 @@
 URL01: https://github.com/alevel7/cdond-c3-projectstarter
-URL02 : http://udapeople-474a171.s3-website-us-west-2.amazonaws.com
-URL03: https://d1b105ombi9n98.cloudfront.net
+URL02 : http://udapeople-6660dbc.s3-website-us-west-2.amazonaws.com/#/employees -s3
+URL03: https://d1b105ombi9n98.cloudfront.net -cloud front
 URL05: http://ec2-35-90-162-187.us-west-2.compute.amazonaws.com:9090/graph
+
+video_link_to_watch  -https://www.loom.com/share/ba9d5c0fde624f07a5eb1b38548ba9f7
